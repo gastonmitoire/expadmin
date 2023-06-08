@@ -1,12 +1,16 @@
 import Image from "next/image";
 
 async function getData() {
-  const res = await fetch("http://localhost:3000/api/users", {
-    cache: "no-cache",
-  });
-  const data = await res.json();
-  console.log(data);
-  return data;
+  try {
+    const res = await fetch("http://localhost:3000/api/users", {
+      cache: "no-cache",
+    });
+    const data = await res.json();
+    console.log(data);
+    return data;
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 export default async function Home() {
